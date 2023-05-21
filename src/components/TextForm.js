@@ -37,18 +37,18 @@ export default function TextForm(props) {
                 <h1>{props.heading}</h1>
                 <textarea style={{backgroundColor: props.mode==='dark'?'grey':'white'}} className="form-control" value={text}  onChange={handleOnChange} placeholder="Enter Your Text Here..." id="myBox" rows="8"></textarea>
             </div>
-            <button className="btn btn-primary mx-2" onClick={handleUpText}>Convert to UpperCase</button>
-            <button className="btn btn-primary mx-2" onClick={handleLowText}>Convert to LowerCase</button>
-            <button className="btn btn-primary mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
-            <button className="btn btn-primary mx-2" onClick={handleCopyText}>Copy Text</button>
-            <button className="btn btn-primary mx-2" onClick={() => setText("")}>Clear the Text</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleUpText}>Convert to UpperCase</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleLowText}>Convert to LowerCase</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={handleCopyText}>Copy Text</button>
+            <button className="btn btn-primary mx-2 my-1" onClick={() => setText("")}>Clear the Text</button>
         </div>
         <div className="container my-3" style={{color: props.mode === 'dark'?'white':'black'}}>
             <h1>Your Text Summary</h1>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
+            <p>{text.split(" ").filter((e) =>{return e.length !== 0}).length} words and {text.length} characters</p>
             <p>{0.008 * text.split(" ").length} Minutes read</p>
             <h1>Preview</h1>
-            <p>{text.length > 0 ? text : "Enter Something for preview"}</p>
+            <p>{text.length > 0 ? text : "Nothing to preview"}</p>
         </div>
     </>
   )
